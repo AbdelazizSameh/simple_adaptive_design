@@ -10,10 +10,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
-      ),
+      appBar: MediaQuery.sizeOf(context).width - 24 < 900
+          ? AppBar(backgroundColor: Colors.black, foregroundColor: Colors.white)
+          : null,
       drawer: const CustomDrawer(),
       body: const HomeViewBody(),
     );

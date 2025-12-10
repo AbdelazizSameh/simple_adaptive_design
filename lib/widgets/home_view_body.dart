@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
-import 'custom_sliver_grid_builder.dart';
-import 'custom_sliver_list.dart';
+import 'desktop_layout.dart';
+import 'mobile_layout.dart';
+import 'tablet_layout.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsetsGeometry.all(12),
-      child: CustomScrollView(
-        physics: BouncingScrollPhysics(),
-        slivers: [CustomSliverGirdBuilder(), CustomSliverList()],
+    return Padding(
+      padding: const EdgeInsetsGeometry.all(12),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth < 600) {
+            return const MobileLayout();
+          } else if (constraints.maxWidth < 900) {
+            return const TabletLayout();
+          } else {
+            return const DesktopLayout();
+          }
+        },
       ),
     );
   }

@@ -7,6 +7,13 @@ class CustomListTileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(leading: Icon(item.icon), title: Text(item.text));
+    return ListTile(
+      leading: Icon(item.icon),
+      title: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: Alignment.centerLeft,
+        child: Text(item.text),
+      ),
+    );
   }
 }
